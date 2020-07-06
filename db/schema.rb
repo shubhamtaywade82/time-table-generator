@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_05_193054) do
+ActiveRecord::Schema.define(version: 2020_07_06_080053) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,10 @@ ActiveRecord::Schema.define(version: 2020_07_05_193054) do
     t.string "alias"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "branch_id", null: false
+    t.bigint "subject_id", null: false
+    t.index ["branch_id"], name: "index_faculties_on_branch_id"
+    t.index ["subject_id"], name: "index_faculties_on_subject_id"
   end
 
   create_table "subjects", force: :cascade do |t|
@@ -35,6 +39,8 @@ ActiveRecord::Schema.define(version: 2020_07_05_193054) do
     t.integer "semester"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "branch_id", null: false
+    t.index ["branch_id"], name: "index_subjects_on_branch_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -63,4 +69,7 @@ ActiveRecord::Schema.define(version: 2020_07_05_193054) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "faculties", "branches"
+  add_foreign_key "faculties", "subjects"
+  add_foreign_key "subjects", "branches"
 end
