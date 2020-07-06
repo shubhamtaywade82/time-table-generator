@@ -1,0 +1,9 @@
+<h1>Add New Subject</h1>
+<% if (@branch.present?) %>
+  <%= render 'form', subject: @subject %>
+<% else %>
+  <h4>Your Department table is empty, first add <%= link_to 'Department', branches_path%> here</h4>
+  <br>
+<% end %>
+<br>
+<%= link_to ' Back', subjects_path, class:"fa fa-arrow-left"%>

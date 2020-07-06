@@ -1,0 +1,8 @@
+<h1>Faculties</h1>
+<% if @faculties.count > 0 %>
+  <%= render 'faculty' %>
+<% else %>
+  <h4>No Subject entered</h4>
+<% end %>
+<br>
+<%= link_to 'New Faculty', new_faculty_path %>

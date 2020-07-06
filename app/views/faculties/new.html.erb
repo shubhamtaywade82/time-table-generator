@@ -1,0 +1,12 @@
+<h1>New Faculty</h1>
+<% if (@branch.present?) && (@subject.present?) %>
+  <%= render 'form', faculty: @faculty %>
+<% elsif (@subject.present?) %>
+  <h4>Your Department table is empty, first add <%= link_to 'Department', new_branch_path%> here</h4>
+<% elsif (@branch.present?) %>
+  <h4>Your Subjects table is empty, first add <%= link_to 'Subjects', new_subject_path%> here</h4>
+<% else %>
+  <h4>Your Department and Subject tables are empty add both from here <%= link_to 'Department', new_branch_path%> and <%= link_to 'Subjects', new_subject_path%></h4>
+<% end %>
+<br>
+<%= link_to ' Back', faculties_path, class:"fa fa-arrow-left" %>

@@ -1,0 +1,8 @@
+<h1>Branches</h1>
+<% if @branches.count > 0 %>
+  <%= render 'branch' %>
+<% else %>
+  <h4>No Subject entered</h4>
+<% end %>
+<br>
+<%= link_to ' Add Branch', new_branch_path, class:"btn btn-primary fa fa-plus " %>
